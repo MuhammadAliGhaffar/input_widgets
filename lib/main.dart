@@ -96,8 +96,12 @@ class _State extends State<MyApp> {
                     }
                   });
                 }),
-            Checkbox(
-                checkColor: Colors.blue,
+            new CheckboxListTile(
+                title: Text('CheckboxList'),
+                subtitle: Text('subTitle'),
+                secondary: new Icon(Icons.person),
+                controlAffinity: ListTileControlAffinity.leading,
+                checkColor: Colors.black,
                 activeColor: Colors.white,
                 value: this.flag2,
                 onChanged: (bool? flag) {
