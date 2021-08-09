@@ -13,18 +13,40 @@ class MyApp extends StatefulWidget {
 
 class _State extends State<MyApp> {
   String value = '';
+  bool flag1 = false;
+  bool flag2 = false;
 
-  void onChanged(String value) {
-    setState(() {
-      this.value = 'Change :$value';
-    });
-  }
+  // void onChanged(String value) {
+  //   setState(() {
+  //     this.value = 'Change :$value';
+  //   });
+  // }
 
-  void onSubmit(String value) {
-    setState(() {
-      this.value = 'Submit :$value';
-    });
-  }
+  // void onSubmit(String value) {
+  //   setState(() {
+  //     this.value = 'Submit :$value';
+  //   });
+  // }
+
+  // void flag1Change(bool? flag) {
+  //   setState(() {
+  //     if (flag != null) {
+  //       setState(() {
+  //         this.flag1 = flag;
+  //       });
+  //     }
+  //   });
+  // }
+
+  // void flag2Change(bool? flag) {
+  //   setState(() {
+  //     if (flag != null) {
+  //       setState(() {
+  //         this.flag2 = flag;
+  //       });
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -36,18 +58,57 @@ class _State extends State<MyApp> {
         padding: new EdgeInsets.all(32.0),
         child: new Column(
           children: <Widget>[
-            new Text(this.value),
-            new TextField(
+            Text(this.value),
+            TextField(
               decoration: new InputDecoration(
                   labelText: 'Username',
                   hintText: 'Enter Username',
                   icon: new Icon(Icons.person)),
               autocorrect: true,
               autofocus: true,
-              keyboardType: TextInputType.text,//You can change type with no ,email etc
-              onChanged: onChanged,
-              onSubmitted: onSubmit,
-            )
+              keyboardType: TextInputType.text,
+              //You can change type with no ,email etc
+              onChanged: (String value) {
+                setState(() {
+                  this.value = 'Change :$value';
+                });
+              },
+              onSubmitted: (String value) {
+                setState(() {
+                  this.value = 'Submit :$value';
+                });
+              },
+            ),
+            Text(
+              'CheckBox Example',
+              style: TextStyle(fontSize: 17.0),
+            ),
+            Checkbox(
+                checkColor: Colors.black,
+                activeColor: Colors.white,
+                value: this.flag1,
+                onChanged: (bool? flag) {
+                  setState(() {
+                    if (flag != null) {
+                      setState(() {
+                        this.flag1 = flag;
+                      });
+                    }
+                  });
+                }),
+            Checkbox(
+                checkColor: Colors.blue,
+                activeColor: Colors.white,
+                value: this.flag2,
+                onChanged: (bool? flag) {
+                  setState(() {
+                    if (flag != null) {
+                      setState(() {
+                        this.flag2 = flag;
+                      });
+                    }
+                  });
+                })
           ],
         ),
       ),
