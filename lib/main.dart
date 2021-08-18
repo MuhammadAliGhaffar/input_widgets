@@ -143,9 +143,106 @@ class _State extends State<MyApp> {
                 },
               ),
             ),
+            makeRadio(),
+            makeRadioTiles(),
           ],
         ),
       ),
     );
+  }
+
+  Widget makeRadio() {
+    List<Widget> list = [
+      new Radio(
+          value: 0,
+          groupValue: _val1,
+          onChanged: (int? _val1) {
+            setState(() {
+              if (_val1 != null) {
+                this._val1 = _val1;
+              }
+            });
+          }),
+      new Radio(
+          value: 1,
+          groupValue: _val1,
+          onChanged: (int? _val1) {
+            setState(() {
+              if (_val1 != null) {
+                this._val1 = _val1;
+              }
+            });
+          }),
+      new Radio(
+          value: 2,
+          groupValue: _val1,
+          onChanged: (int? _val1) {
+            setState(() {
+              if (_val1 != null) {
+                this._val1 = _val1;
+              }
+            });
+          })
+    ];
+
+    Column column = new Column(
+      children: list,
+    );
+    return column;
+  }
+
+  Widget makeRadioTiles() {
+    List<Widget> list = [
+      new RadioListTile(
+        value: 0,
+        groupValue: _val2,
+        onChanged: (int? _val2) {
+          setState(() {
+            if (_val2 != null) {
+              this._val2 = _val2;
+            }
+          });
+        },
+        activeColor: Colors.red,
+        controlAffinity: ListTileControlAffinity.trailing,
+        title: Text('Item 1'),
+        subtitle: Text('sub title'),
+      ),
+      new RadioListTile(
+        value: 1,
+        groupValue: _val2,
+        onChanged: (int? _val2) {
+          setState(() {
+            if (_val2 != null) {
+              this._val2 = _val2;
+            }
+          });
+        },
+        activeColor: Colors.blue,
+        controlAffinity: ListTileControlAffinity.trailing,
+        title: Text('Item 2'),
+        subtitle: Text('sub title'),
+      ),
+      new RadioListTile(
+        value: 2,
+        groupValue: _val2,
+        onChanged: (int? _val2) {
+          setState(() {
+            if (_val2 != null) {
+              this._val2 = _val2;
+            }
+          });
+        },
+        activeColor: Colors.green,
+        controlAffinity: ListTileControlAffinity.trailing,
+        title: Text('Item 3'),
+        subtitle: Text('sub title'),
+      )
+    ];
+
+    Column column = new Column(
+      children: list,
+    );
+    return column;
   }
 }
