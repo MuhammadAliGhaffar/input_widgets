@@ -119,32 +119,51 @@ class _State extends State<MyApp> {
             //         }
             //       });
             //     }),
-            ListTile(
-              title: const Text('Lafayette'),
-              leading: Radio<SingingCharacter>(
-                value: SingingCharacter.lafayette,
-                groupValue: _character,
-                onChanged: (SingingCharacter? value) {
+            // ListTile(
+            //   title: const Text('Lafayette'),
+            //   leading: Radio<SingingCharacter>(
+            //     value: SingingCharacter.lafayette,
+            //     groupValue: _character,
+            //     onChanged: (SingingCharacter? value) {
+            //       setState(() {
+            //         _character = value;
+            //       });
+            //     },
+            //   ),
+            // ),
+            // ListTile(
+            //   title: const Text('Thomas Jefferson'),
+            //   leading: Radio<SingingCharacter>(
+            //     value: SingingCharacter.jefferson,
+            //     groupValue: _character,
+            //     onChanged: (SingingCharacter? value) {
+            //       setState(() {
+            //         _character = value;
+            //       });
+            //     },
+            //   ),
+            // ),
+            // makeRadio(),
+            // makeRadioTiles(),
+            new Switch(value: flag1, onChanged: (bool? flag) {
+              setState(() {
+                if (flag != null) {
                   setState(() {
-                    _character = value;
+                    this.flag1 = flag;
                   });
-                },
-              ),
-            ),
-            ListTile(
-              title: const Text('Thomas Jefferson'),
-              leading: Radio<SingingCharacter>(
-                value: SingingCharacter.jefferson,
-                groupValue: _character,
-                onChanged: (SingingCharacter? value) {
+                }
+              });
+            }),
+            new SwitchListTile(value: flag2, onChanged: (bool? flag) {
+              setState(() {
+                if (flag != null) {
                   setState(() {
-                    _character = value;
+                    this.flag2 = flag;
                   });
-                },
-              ),
-            ),
-            makeRadio(),
-            makeRadioTiles(),
+                }
+              });
+            },
+            title: new Text('SwitchList Title',style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.deepOrange),),)
           ],
         ),
       ),
