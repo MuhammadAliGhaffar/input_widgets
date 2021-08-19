@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatefulWidget {
 enum SingingCharacter { lafayette, jefferson }
 
 class _State extends State<MyApp> {
+  DateTime selectedDate = DateTime.now();
   String value = '';
   bool flag1 = false;
   bool flag2 = false;
@@ -174,8 +176,15 @@ class _State extends State<MyApp> {
             //         fontWeight: FontWeight.bold, color: Colors.deepOrange),
             //   ),
             // )
-            new Text('Value = ${(v * 100).round()}'),
-            makeSlider()
+            // new Text('Value = ${(v * 100).round()}'),
+            // makeSlider()
+            Text("${selectedDate.toLocal()}".split(' ')[0]),
+            SizedBox(
+              height: 20.0,
+            ),
+            RaisedButton(
+                onPressed: () => _selectDate(context),
+                child: Text('Select date'))
           ],
         ),
       ),
@@ -285,5 +294,17 @@ class _State extends State<MyApp> {
             this.v = v;
           });
         });
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
   }
 }
