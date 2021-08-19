@@ -18,6 +18,7 @@ class _State extends State<MyApp> {
   bool flag1 = false;
   bool flag2 = false;
   SingingCharacter? _character = SingingCharacter.lafayette;
+  double v = 0.0;
 
   // void onChanged(String value) {
   //   setState(() {
@@ -145,25 +146,36 @@ class _State extends State<MyApp> {
             // ),
             // makeRadio(),
             // makeRadioTiles(),
-            new Switch(value: flag1, onChanged: (bool? flag) {
-              setState(() {
-                if (flag != null) {
-                  setState(() {
-                    this.flag1 = flag;
-                  });
-                }
-              });
-            }),
-            new SwitchListTile(value: flag2, onChanged: (bool? flag) {
-              setState(() {
-                if (flag != null) {
-                  setState(() {
-                    this.flag2 = flag;
-                  });
-                }
-              });
-            },
-            title: new Text('SwitchList Title',style: new TextStyle(fontWeight: FontWeight.bold,color: Colors.deepOrange),),)
+            // new Switch(
+            //     value: flag1,
+            //     onChanged: (bool? flag) {
+            //       setState(() {
+            //         if (flag != null) {
+            //           setState(() {
+            //             this.flag1 = flag;
+            //           });
+            //         }
+            //       });
+            //     }),
+            // new SwitchListTile(
+            //   value: flag2,
+            //   onChanged: (bool? flag) {
+            //     setState(() {
+            //       if (flag != null) {
+            //         setState(() {
+            //           this.flag2 = flag;
+            //         });
+            //       }
+            //     });
+            //   },
+            //   title: new Text(
+            //     'SwitchList Title',
+            //     style: new TextStyle(
+            //         fontWeight: FontWeight.bold, color: Colors.deepOrange),
+            //   ),
+            // )
+            new Text('Value = ${(v * 100).round()}'),
+            makeSlider()
           ],
         ),
       ),
@@ -263,5 +275,15 @@ class _State extends State<MyApp> {
       children: list,
     );
     return column;
+  }
+
+  Widget makeSlider() {
+    return new Slider(
+        value: this.v,
+        onChanged: (double v) {
+          setState(() {
+            this.v = v;
+          });
+        });
   }
 }
